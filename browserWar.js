@@ -1,5 +1,6 @@
 /* BrowserWar, version 0.3.1
- * version 0.3.1 by Peter Boling and Matt Long <http://www.sagebit.com/> 20081029
+ * version: 0.3.1 by Peter Boling and Matt Long <http://www.sagebit.com/> 20081029
+ * license: MIT
  *
  * BrowserWar is a Javascript library for detecting a specific browser and displaying custom html in the response to requests from that browser.
  * This library can be imported into a project to detect browsers and/or versions of browsers (hello IE!) and display a message 

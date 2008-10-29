@@ -1,0 +1,46 @@
+BrowserWar, version 0.3.1
+    Written by Peter Boling and Matt Long <http://www.sagebit.com/> 20081029
+    Lisence: MIT
+
+BrowserWar is a Javascript library for detecting a specific browser and displaying custom html in the response to requests from that browser. This library can be imported into a project to detect browsers and/or versions of browsers (hello IE!) and display a message stating that the site is optimized for more modern browsers. "BrowserDetect" tool used here is from http://www.quirksmode.org/js/detect.html
+
+Examples (edit bottom of browserWar.js, or can be called within <script> tag in HTML files):
+browserwar.setup();
+browserwar.klass('', 'browser_warning', true);
+browserwar.message('<p>This site is optimized for the <a href="http://www.mozilla.com/en-US/firefox/"> Mozilla Firefox</a> browser.</p>' +
+  "<p>It looks like you're using <b>" + browserwar.browser_display_name + " " + BrowserDetect.version + "</b> or older. To get the best experience from this site we suggest you upgrade your browser.</p>" +
+  '<p>Click the image below to learn more about alternative browser options.</p>' +
+  '<a href="http://browsehappy.com/browsers/" title="Browse Happy: Switch to a safer browser today"><img src="http://browsehappy.com/buttons/bh_185x75.gif" alt="Browse Happy logo" width="185" height="75"></a>');
+browserwar.position('90px','0px','200');
+browserwar.linkcolors('blue','red','purple')
+browserwar.style('200px','20px','8px ridge #CE8DAD','#fff','#000');
+browserwar.fight('Explorer', 6);
+browserwar.fight('iCab');
+browserwar.run();
+
+Explanations:
+browserwar.setup : Setup the browserwar.browser_display_name variable
+browserwar.klass(domClass, domId, closeable)
+    Specify the DOM class and id for the warning div.
+    domClass: String, the CSS class of the div the message that will be displayed to the user.
+    domId: String, the DOM id of the div the message is in that will be displayed to the user.
+    closeable: boolean true, false, or null
+        if true, then a close link is added to the "message" to the user, so they can clear it off their screen.
+        The close link will be above the browserwar.message if browserwar.klass is called before the browserwar.message function, or below it if after.
+        The close link is wrapped in a div with id="browser_war_close_div, and the link has an id="browser_war_close_link"
+browserwar.message(message)
+    Specify the message to display in the warning div.
+browserwar.position(topPosition, leftPosition, zIndex)
+    Specify the position and z-index of the warning div.
+browserwar.style(width, padding, border, background, color)
+    Specify the styling of the warning div.
+broswerwar.linkcolors(linkColor, alinkColor, vlinkColor)
+    Specify the colors of the links in the div. (overridden if link style is set in a CSS file)
+browserwar.fight(browser, version)
+    Specify the browser to warn.  Can be run multiple times to specify multiple browsers.
+        Possible browser identities to fight:
+        ["Chrome","OmniWeb","Safari","Opera","iCab","Konqueror","Firefox","Camino","Netscape","Explorer","Mozilla"]
+        Parameters: (browser, version), will warn all versions of browser if version is not specified
+browserwar.run()
+    Detect the browser and add the warning div to the page's onload event.
+
